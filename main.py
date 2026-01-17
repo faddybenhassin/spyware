@@ -45,9 +45,10 @@ def get_master_key(path, output):
 
         # Write the decrypted master key to the output file
         open(output, "wb").write(master_key)
-    except:
-        # Silently fail if file doesn't exist or decryption fails
-        pass
+        print(f"Master key extracted: {output}")
+    except Exception as e:
+        # Print error if file doesn't exist or decryption fails
+        print(f"Failed to extract master key from {path}: {e}")
 
 
 def get_login_data(path, output):
@@ -70,9 +71,10 @@ def get_login_data(path, output):
 
         # Copy the database file to the output location
         shutil.copy2(login_db, output)
-    except:
-        # Silently fail if file doesn't exist or copy fails
-        pass
+        print(f"Login data extracted: {output}")
+    except Exception as e:
+        # Print error if file doesn't exist or copy fails
+        print(f"Failed to extract login data from {path}: {e}")
 
 
 
